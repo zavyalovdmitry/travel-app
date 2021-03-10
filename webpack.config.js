@@ -18,13 +18,20 @@ module.exports = {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
   ],
+  devtool:'inline-source-map',
+  resolve:{
+    extensions:['.js','.jsx'],
+  },
   module: {
     rules: [
       {
-        test: /\.m?js$/,
+        test: /\.(js|jsx)$/,
         exclude: /(node_modules|bower_components)/,
         use: {
-          loader: "babel-loader"
+          loader: "babel-loader",
+          options:{
+            presets:['@babel/preset-react']
+          }
         }
       },
       {
