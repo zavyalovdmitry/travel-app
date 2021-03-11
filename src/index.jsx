@@ -1,6 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './component/App';
-import './assets/style.css';
+import { BrowserRouter } from "react-router-dom";
 
-ReactDOM.render(<App />, document.querySelector('#root'));
+import App from './components/App';
+import './assets/style.css';
+import * as serviceWorker from "./serviceWorker";
+
+ReactDOM.render(
+                <BrowserRouter>
+                    <App />
+                </BrowserRouter>,
+                document.querySelector('#root')
+                );
+
+serviceWorker.unregister();
