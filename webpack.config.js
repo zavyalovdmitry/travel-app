@@ -1,11 +1,12 @@
-const path = require("path");
+const path = require('path');
 const webpack = require('webpack');
+const ESLintPlugin = require('eslint-webpack-plugin');
 
 module.exports = {
-  entry: "./src/index.js",
-  mode: "development",
+  entry: './src/index.jsx',
+  mode: 'development',
   output: {
-    filename: "./main.js"
+    filename: './main.js',
   },
   devServer: {
     historyApiFallback: true,
@@ -17,10 +18,11 @@ module.exports = {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
+    new ESLintPlugin(),
   ],
-  devtool:'inline-source-map',
-  resolve:{
-    extensions:['.js','.jsx'],
+  devtool: 'inline-source-map',
+  resolve: {
+    extensions: ['.js', '.jsx'],
   },
   module: {
     rules: [
@@ -28,25 +30,25 @@ module.exports = {
         test: /\.(js|jsx)$/,
         exclude: /(node_modules|bower_components)/,
         use: {
-          loader: "babel-loader",
-          options:{
-            presets:['@babel/preset-react']
-          }
-        }
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-react'],
+          },
+        },
       },
       {
         test: /\.css$/,
         use: [
-          "style-loader",
+          'style-loader',
           {
-            loader: "css-loader",
-          }
-        ]
+            loader: 'css-loader',
+          },
+        ],
       },
       {
         test: /\.(png|svg|jpg|gif)$/,
-        use: ["file-loader"]
-      }
-    ]
-  }
+        use: ['file-loader'],
+      },
+    ],
+  },
 };

@@ -1,49 +1,65 @@
-import React, { Component } from "react";
-import CardCountry from "./CardCountry";
+import React, { Component } from 'react';
+import CardCountry from './CardCountry';
 
 class CardsBoard extends Component {
   constructor(props) {
     super(props);
     this.countries = [
       {
-        name:"country1",
-        capital:'capital1'
+        id: 1,
+        name: 'country1',
+        capital: 'capital1',
       },
       {
-        name:"country2",
-        capital:'capital2'
+        id: 2,
+        name: 'country2',
+        capital: 'capital2',
       },
       {
-        name:"country3",
-        capital:'capital3'
+        id: 3,
+        name: 'country3',
+        capital: 'capital3',
       },
       {
-        name:"country1",
-        capital:'capital1'
+        id: 4,
+        name: 'country1',
+        capital: 'capital1',
       },
       {
-        name:"country2",
-        capital:'capital2'
+        id: 5,
+        name: 'country2',
+        capital: 'capital2',
       },
       {
-        name:"country3",
-        capital:'capital3'
+        id: 6,
+        name: 'country3',
+        capital: 'capital3',
       },
       {
-        name:"country1",
-        capital:'capital1'
+        id: 7,
+        name: 'country1',
+        capital: 'capital1',
       },
       {
-        name:"country2",
-        capital:'capital2'
+        id: 8,
+        name: 'country2',
+        capital: 'capital2',
       },
     ];
   }
 
   render() {
-    return  <section className="cards-block">
-      {this.countries.map((el,index)=><CardCountry key={index} nameCountry={el.name} capitalCountry={el.capital}/>)}
-    </section>;
+    return (
+      <section className="cards-block">
+        {this.countries.map((el) => (
+          <CardCountry
+            key={el.id}
+            nameCountry={el.name}
+            capitalCountry={el.capital}
+          />
+        ))}
+      </section>
+    );
   }
 }
 

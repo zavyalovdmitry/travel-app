@@ -1,11 +1,9 @@
-import React, { Component } from "react";
+import React from 'react';
 
-class Search extends Component {
-  render() {
-    return  <div className="search">
-    <input type="search" placeholder="Search"/>
-  </div>;
-  }
-}
+const Search = () => (
+  <div className="search">
+    <input type="search" placeholder="Search" />
+  </div>
+);
 
 export default Search;
