@@ -4,7 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 
 import App from './components/App';
 import './assets/style.css';
-import * as serviceWorker from "./serviceWorker";
+// import * as serviceWorker from "./serviceWorker";
 
 ReactDOM.render(
                 <BrowserRouter>
@@ -13,4 +13,4 @@ ReactDOM.render(
                 document.querySelector('#root')
                 );
 
-serviceWorker.unregister();
+// serviceWorker.unregister();
