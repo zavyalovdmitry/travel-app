@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../assets/image/rss.svg';
+import logo from 'assets/image/rss.svg';
 
 const Footer = () => (
   <footer>

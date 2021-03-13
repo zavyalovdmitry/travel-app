@@ -1,10 +1,16 @@
 {
   "parser": "babel-eslint",
-  "extends": ["airbnb"],
+  "extends": [
+    "airbnb/base",
+    "eslint:recommended",
+    "plugin:react/recommended"
+  ],
   "rules": {
-    "linebreak-style": ["error", "windows"]
+    "linebreak-style": ["error", "windows"],
+    "import/no-unresolved": "off"
   },
   "env": {
-    "browser": true
+    "browser": true,
+    "es6":true
 }
 }

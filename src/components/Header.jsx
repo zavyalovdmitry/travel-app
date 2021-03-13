@@ -1,7 +1,7 @@
 import React from 'react';
-import Logo from './Logo';
-import Search from './Search';
-import LanguageToggle from './LanguageToggle';
+import Logo from 'components/Logo';
+import Search from 'components/Search';
+import LanguageToggle from 'components/LanguageToggle';
 
 const Header = () => (
   <header>

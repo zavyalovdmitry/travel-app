@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import CardCountry from './CardCountry';
+import CardCountry from 'components/CardCountry';
+import PropTypes from 'prop-types';
 
 class CardsBoard extends Component {
   constructor(props) {
@@ -56,11 +57,16 @@ class CardsBoard extends Component {
             key={el.id}
             nameCountry={el.name}
             capitalCountry={el.capital}
+            changeLink={this.props.changeLink}
           />
         ))}
       </section>
     );
   }
 }
+
+CardsBoard.propTypes = {
+  changeLink: PropTypes.func.isRequired,
+};
 
 export default CardsBoard;

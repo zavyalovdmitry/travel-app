@@ -23,6 +23,7 @@ module.exports = {
   devtool: 'inline-source-map',
   resolve: {
     extensions: ['.js', '.jsx'],
+    modules: [path.resolve(__dirname, 'src'), 'node_modules'],
   },
   module: {
     rules: [
@@ -37,12 +38,11 @@ module.exports = {
         },
       },
       {
-        test: /\.css$/,
+        test: /\.s[ac]ss$/i,
         use: [
           'style-loader',
-          {
-            loader: 'css-loader',
-          },
+          'css-loader',
+          'sass-loader',
         ],
       },
       {
