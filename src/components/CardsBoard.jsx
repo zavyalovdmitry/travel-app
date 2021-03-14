@@ -1,58 +1,37 @@
 import React, { Component } from 'react';
 import CardCountry from 'components/CardCountry';
 import PropTypes from 'prop-types';
+import CountryDataService from 'services/country.service';
 
 class CardsBoard extends Component {
   constructor(props) {
     super(props);
-    this.countries = [
-      {
-        id: 1,
-        name: 'country1',
-        capital: 'capital1',
-      },
-      {
-        id: 2,
-        name: 'country2',
-        capital: 'capital2',
-      },
-      {
-        id: 3,
-        name: 'country3',
-        capital: 'capital3',
-      },
-      {
-        id: 4,
-        name: 'country1',
-        capital: 'capital1',
-      },
-      {
-        id: 5,
-        name: 'country2',
-        capital: 'capital2',
-      },
-      {
-        id: 6,
-        name: 'country3',
-        capital: 'capital3',
-      },
-      {
-        id: 7,
-        name: 'country1',
-        capital: 'capital1',
-      },
-      {
-        id: 8,
-        name: 'country2',
-        capital: 'capital2',
-      },
-    ];
+    this.state = {
+      countries: [],
+    };
+  }
+
+  componentDidMount() {
+    this.retrieveCountries();
+  }
+
+  retrieveCountries() {
+    CountryDataService.getAll()
+      .then((response) => {
+        this.setState({
+          countries: response.data,
+        });
+        console.log(response.data);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
   }
 
   render() {
     return (
       <section className="cards-block">
-        { this.countries.map((el) => (el.name.includes(this.props.filterValue)
+        { this.state.countries.map((el) => (el.name.includes(this.props.filterValue)
          || el.capital.includes(this.props.filterValue) ? <CardCountry
             key={el.id}
             nameCountry={el.name}
