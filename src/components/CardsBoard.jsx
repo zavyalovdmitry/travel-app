@@ -52,14 +52,14 @@ class CardsBoard extends Component {
   render() {
     return (
       <section className="cards-block">
-        {this.countries.map((el) => (
-          <CardCountry
+        { this.countries.map((el) => (el.name.includes(this.props.filterValue)
+         || el.capital.includes(this.props.filterValue) ? <CardCountry
             key={el.id}
             nameCountry={el.name}
             capitalCountry={el.capital}
             changeLink={this.props.changeLink}
-          />
-        ))}
+          /> : null))
+      }
       </section>
     );
   }
@@ -67,6 +67,7 @@ class CardsBoard extends Component {
 
 CardsBoard.propTypes = {
   changeLink: PropTypes.func.isRequired,
+  filterValue: PropTypes.string.isRequired,
 };
 
 export default CardsBoard;
