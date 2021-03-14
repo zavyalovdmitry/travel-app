@@ -46,5 +46,5 @@ export default class Weather extends Component {
 }
 
 Weather.propTypes = {
-  city: PropTypes.string.isRequired,
+  city: PropTypes.number.isRequired,
 };

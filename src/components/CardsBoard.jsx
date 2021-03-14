@@ -7,7 +7,13 @@ class CardsBoard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      countries: [],
+      countries: [
+        {
+          id: 1,
+          name: 'sdfdsf',
+          capital: 'sdfs',
+        },
+      ],
     };
   }
 
