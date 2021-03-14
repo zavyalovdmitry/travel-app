@@ -1,0 +1,50 @@
+import React, {Component} from 'react'
+
+export default class Weather extends Component{
+
+    constructor(props){
+        super(props);
+        this.state={
+            WeatherData: {}
+        };
+    }
+
+    componentDidMount(){
+        this.wetherGet();
+    }
+
+    wetherGet = () =>{
+
+        const urlQuery=`http://api.openweathermap.org/data/2.5/weather?id=${this.props.City}&lang=ru&appid=4146c38d01d60ac4249d0bbc80a1cffa`;
+        
+        //https://openweathermap.org/current#current_JSON
+        fetch(urlQuery).then(weatherData=>weatherData.json())
+        .then(data=> {
+
+            this.setState({
+                WeatherData: data
+            });
+        });
+    }
+
+    render(){
+        const {WeatherData} = this.state;
+
+        if(WeatherData && WeatherData.weather)
+        {
+            const {name} = WeatherData ;
+            const temp=Math.round(WeatherData.main.temp - 273);
+            return (
+                <div className='weather'>
+                    <div>{name}</div>
+                    <img src={`http://openweathermap.org/img/wn/${WeatherData.weather[0]["icon"]}@2x.png`} />
+                    <div>{ ((+temp>0)? ('+'+temp): temp)+ 'C'}</div>    
+                    <div>{WeatherData.weather[0]['description']}</div>
+                   
+                </div>
+            );
+        }
+        else return <div>nothing</div>
+    }
+
+}

@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import logo from 'assets/image/1.jpg';
 import PropTypes from 'prop-types';
+import Time from 'components/tools/time';
+import Weather from 'components/tools/weather';
+import AppMap from 'components/tools/map';
+import ExchangeRates from 'components/tools/exchangeRates';
 import Gallery from 'components/Gallery';
 
 class DetailPage extends Component {
@@ -51,13 +55,15 @@ class DetailPage extends Component {
           </div>
         </article>
         <article>
-          Vidgets
+         <Time UTC={2}/>
+         <Weather City={833}/>
+         <ExchangeRates currency={'RUB'}/>
         </article>
         <article>
           <Gallery arrAttractions={arrAttractions}/>
         </article>
         <article>
-          Map
+          <AppMap Country={'RU'} Coordinates={[53.19436343429614, 27.733527648710943]} lang={'en'}/>
         </article>
         {this.props.pr}
      </section>
