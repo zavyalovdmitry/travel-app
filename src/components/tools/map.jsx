@@ -1,48 +1,46 @@
-import React from "react";
-import { YMaps, Map,FullscreenControl,Placemark,ZoomControl } from "react-yandex-maps";
-
-
-
-
-const COLORS = ["#F0F075", "#FB6C3F", "#3D4C76", "#49C0B5"];
+import React from 'react';
+import {
+  YMaps, Map, FullscreenControl, Placemark, ZoomControl,
+} from 'react-yandex-maps';
+import PropTypes from 'prop-types';
 
 export default function AppMap(props) {
-  const mapRef = React.createRef(null); 
-  const langGet=props.lang+"_RU";
+  const COLOR = '#49C0B5';
+  const mapRef = React.createRef(null);
+  const langGet = `${props.lang}_RU`;
   const mapState = {
     center: props.Coordinates,
     zoom: 4,
-    controls: []
+    controls: [],
   };
 
-  const getRegions = ymaps => {
+  const getRegions = (ymaps) => {
     if (mapRef && mapRef.current) {
-      var objectManager = new ymaps.ObjectManager();
+      const objectManager = new ymaps.ObjectManager();
       ymaps.borders
-        .load("001", {
-          lang: "ru",
-          quality: 2
+        .load('001', {
+          lang: 'ru',
+          quality: 2,
         })
-        .then(result => {
+        .then((result) => {
+          const countrysAll = result.features;
 
-          let countrysAll=result.features;
-          let country='';
-        
-          for(let value of countrysAll){
-            if(value.properties.iso3166==props.Country){
-              value.id=value.properties.iso3166;
+          /* eslint-disable-next-line */
+          for (const value of countrysAll) {
+            if (value.properties.iso3166 === props.Country) {
+              value.id = value.properties.iso3166;
               value.options = {
                 fillOpacity: 0.6,
-                strokeColor: "#FFF",
-                strokeOpacity: 0.5
+                strokeColor: '#FFF',
+                strokeOpacity: 0.5,
               };
-              value.options.fillColor = COLORS[3];
+              value.options.fillColor = COLOR;
               objectManager.add(value);
               mapRef.current.geoObjects.add(objectManager);
-             
               break;
-            }       
-          }});
+            }
+          }
+        });
     }
   };
 
@@ -54,9 +52,9 @@ export default function AppMap(props) {
           instanceRef={mapRef}
           state={mapState}
           // Используем коллбэк функцию при загрузке карты
-          onLoad={ymaps => getRegions(ymaps)}
+          onLoad={(ymaps) => getRegions(ymaps)}
           // Подключаем модули регионов и ObjectManager
-          modules={["borders", "ObjectManager"]}>
+          modules={['borders', 'ObjectManager']}>
                <FullscreenControl />
                 <ZoomControl />
                 <Placemark defaultGeometry={props.Coordinates} />
@@ -65,3 +63,9 @@ export default function AppMap(props) {
     </div>
   );
 }
+
+AppMap.propTypes = {
+  lang: PropTypes.string.isRequired,
+  Coordinates: PropTypes.array.isRequired,
+  Country: PropTypes.string.isRequired,
+};

@@ -56,7 +56,7 @@ class DetailPage extends Component {
         </article>
         <article>
          <Time UTC={2}/>
-         <Weather City={833}/>
+         <Weather city={833}/>
          <ExchangeRates currency={'RUB'}/>
         </article>
         <article>
