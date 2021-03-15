@@ -53,6 +53,10 @@ const localeSchema = new Schema({
               unique: true,
               required: true,
             },
+            UTC: {
+              type: String,
+              required: true,
+            },
             capitalLocation: {
               type: {
                 type: String,

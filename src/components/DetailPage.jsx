@@ -117,7 +117,7 @@ class DetailPage extends Component {
 
     const exchangeLoad = <ExchangeRates currency={this.state.country.currency}/>
     const mapLoad = <AppMap Country={this.state.country.ISOCode} Coordinates={this.state.country.capitalLocation.coordinates} lang={this.state.country.localizations[this.props.lang].lang}/>
-    const timeLoad = <Time UTC={2}/>;
+    const timeLoad = <Time UTC={this.state.country.UTC}/>;
     const weatherLoad = <Weather lat={this.state.country.capitalLocation.coordinates[0]} lon={this.state.country.capitalLocation.coordinates[1]} lang={this.state.country.localizations[this.props.lang].lang}/>;
 
 
