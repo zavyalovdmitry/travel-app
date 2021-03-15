@@ -137,7 +137,7 @@ exports.deleteAll = (req, res) => {
 };
 
 // Find all published Countries
-// exports.findAllPublished = (req, res) => {
+exports.findAllPublished = (req, res) => {
 // Tutorial.find({ published: true })
 // .then(data => {
 //   res.send(data);
@@ -148,4 +148,4 @@ exports.deleteAll = (req, res) => {
 //       err.message || "Some error occurred while retrieving tutorials."
 //   });
 // });
-// };
+};

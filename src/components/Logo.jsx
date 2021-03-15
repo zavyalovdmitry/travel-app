@@ -14,7 +14,7 @@ const Logo = (props) => {
 
 Logo.propTypes = {
   logoLink: PropTypes.bool.isRequired,
-  changeLink: PropTypes.func.isRequired,
+  // changeLink: PropTypes.func.isRequired,
 };
 
 export default Logo;

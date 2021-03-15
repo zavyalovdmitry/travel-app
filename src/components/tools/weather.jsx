@@ -14,7 +14,7 @@ export default class Weather extends Component {
   }
 
     wetherGet = () => {
-      const urlQuery = `http://api.openweathermap.org/data/2.5/weather?id=${this.props.city}&lang=ru&appid=4146c38d01d60ac4249d0bbc80a1cffa`;
+      const urlQuery = `http://api.openweathermap.org/data/2.5/weather?lang=${this.props.lang}&lat=${this.props.lat}&lon=${this.props.lon}&appid=4146c38d01d60ac4249d0bbc80a1cffa`;
 
       // https://openweathermap.org/current#current_JSON
       fetch(urlQuery).then((weatherData) => weatherData.json())
@@ -45,6 +45,6 @@ export default class Weather extends Component {
     }
 }
 
-Weather.propTypes = {
-  city: PropTypes.number.isRequired,
-};
+// Weather.propTypes = {
+//   city: PropTypes.number.isRequired,
+// };

@@ -10,15 +10,29 @@ class CardsBoard extends Component {
       countries: [
         {
           id: 1,
-          name: 'sdfdsf',
-          capital: 'sdfs',
+          localizations: [
+            {
+              name: 'blank',
+              capital: 'blank',
+            },
+            {
+              name: 'blank',
+              capital: 'blank',
+            },
+            {
+              name: 'blank',
+              capital: 'blank',
+            },
+          ]
         },
       ],
     };
   }
 
   componentDidMount() {
+    // console.log(this.state.countries)
     this.retrieveCountries();
+    // console.log(this.state.countries)
   }
 
   retrieveCountries() {
@@ -27,7 +41,7 @@ class CardsBoard extends Component {
         this.setState({
           countries: response.data,
         });
-        console.log(response.data);
+        // console.log(response.data);
       })
       .catch((e) => {
         console.log(e);
@@ -37,21 +51,25 @@ class CardsBoard extends Component {
   render() {
     return (
       <section className="cards-block">
-        { this.state.countries.map((el) => (el.name.includes(this.props.filterValue)
-         || el.capital.includes(this.props.filterValue) ? <CardCountry
-            key={el.id}
-            nameCountry={el.name}
-            capitalCountry={el.capital}
-            changeLink={this.props.changeLink}
-          /> : null))
-      }
+        { this.state.countries.map((el, id) => (el.localizations[this.props.lang].name.toLowerCase().includes(this.props.filterValue.toLowerCase())
+         || el.localizations[this.props.lang].capital.toLowerCase().includes(this.props.filterValue.toLowerCase()) 
+            ? <CardCountry
+                key={id}
+                nameCountry={el.localizations[this.props.lang].name}
+                capitalCountry={el.localizations[this.props.lang].capital}
+                changeLink={this.props.changeLink}
+                id={el._id}
+                imgSrc={el.imageUrl}
+              /> 
+            : null))
+        }
       </section>
     );
   }
 }
 
 CardsBoard.propTypes = {
-  changeLink: PropTypes.func.isRequired,
+  // changeLink: PropTypes.func.isRequired,
   filterValue: PropTypes.string.isRequired,
 };
 

@@ -14,8 +14,12 @@ const Search = (props) => {
     if (e.code === 'Enter') props.changeFilter(e.target.value);
   };
 
+  const placeHolder = props.lang === 0 
+                      ? 'Search' 
+                      : 'Поиск';
+
   return <div className="search">
-    <input type="search" placeholder="Search" defaultValue={value} onChange={(e) => changeValue(e.target.value)} ref={inputSearch} onKeyPress={(e) => checkInputKey(e)}/>
+    <input type="search" placeholder={placeHolder} defaultValue={value} onChange={(e) => changeValue(e.target.value)} ref={inputSearch} onKeyPress={(e) => checkInputKey(e)}/>
     <button className='search-btn' onClick={() => props.changeFilter(value)}>
       <img className='icon-search' src={searchIcon} alt="search"/>
     </button>

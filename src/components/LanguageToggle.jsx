@@ -1,13 +1,22 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const LanguageToggle = () => (
-  <div>
-    <select>
-      <option value="ru">RU</option>
-      <option value="en">EN</option>
-      <option value="bl">BL</option>
-    </select>
-  </div>
-);
+class LanguageToggle extends Component {
+
+  toggleLanguage = (e) => {
+    this.props.toggleLang(+e.target.value)
+  }
+
+  render() {
+    // console.log(342)
+    return(
+    <div>
+      <select onChange={this.toggleLanguage}>
+        <option value="0">EN</option>
+        <option value="1">RU</option>
+        <option value="2">BL</option>
+      </select>
+    </div>
+    )}
+};
 
 export default LanguageToggle;
