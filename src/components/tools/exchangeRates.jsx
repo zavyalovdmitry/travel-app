@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Currency from 'components/tools/Currency';
+import Currency from './Currency';
 
 export default class ExchangeRates extends Component {
   render() {

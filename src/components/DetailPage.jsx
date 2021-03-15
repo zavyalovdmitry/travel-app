@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import logo from 'assets/image/1.jpg';
+import logo from '../assets/image/1.jpg';
 import PropTypes from 'prop-types';
-import Time from 'components/tools/time';
-import Weather from 'components/tools/weather';
-import AppMap from 'components/tools/map';
-import ExchangeRates from 'components/tools/exchangeRates';
-import Gallery from 'components/Gallery';
-import CountryDataService from 'services/country.service';
+import Time from './tools/time';
+import Weather from './tools/weather';
+import AppMap from './tools/map';
+import ExchangeRates from './tools/exchangeRates';
+import Gallery from './Gallery';
+import CountryDataService from '../services/country.service';
 
 class DetailPage extends Component {
   constructor(props) {

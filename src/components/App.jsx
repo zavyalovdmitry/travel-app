@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import Header from 'components/Header';
-import Footer from 'components/Footer';
-import CardsBoard from 'components/CardsBoard';
-import DetailPage from 'components/DetailPage';
+import Header from './Header';
+import Footer from './Footer';
+import CardsBoard from './CardsBoard';
+import DetailPage from './DetailPage';
 
 import {
   BrowserRouter as Router,

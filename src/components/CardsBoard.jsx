@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import CardCountry from 'components/CardCountry';
+import CardCountry from './CardCountry';
 import PropTypes from 'prop-types';
-import CountryDataService from 'services/country.service';
+import CountryDataService from '../services/country.service';
 
 class CardsBoard extends Component {
   constructor(props) {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Logo from 'components/Logo';
-import Search from 'components/Search';
-import LanguageToggle from 'components/LanguageToggle';
+import Logo from './Logo';
+import Search from './Search';
+import LanguageToggle from './LanguageToggle';
 import PropTypes from 'prop-types';
 
 class Header extends Component {
