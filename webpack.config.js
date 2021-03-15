@@ -2,8 +2,19 @@ const path = require('path');
 const webpack = require('webpack');
 const ESLintPlugin = require('eslint-webpack-plugin');
 
+const rootModulePath = "./src/";
+const rootBundlePath = "./src/bundle/";
+const isDevBuild = true;
+var CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
+
 module.exports = {
-  entry: './src/index.jsx',
+  stats: { modules: false },
+  resolve: {
+    extensions: ['.js', '.jsx', '.ts', '.tsx', '.css']
+  },
+  entry: {
+    'DIG': rootModulePath + 'index.jsx'
+  },
   mode: 'development',
   output: {
     filename: './main.js',
@@ -17,6 +28,7 @@ module.exports = {
     port: 8080,
   },
   plugins: [
+    new CaseSensitivePathsPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new ESLintPlugin(),
   ],

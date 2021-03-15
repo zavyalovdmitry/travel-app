@@ -2,6 +2,9 @@
   "name": "travel-app",
   "version": "1.0.0",
   "description": "",
+  "engines": {
+    "node": "14.15.1"
+  },
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -24,7 +27,9 @@
     "@babel/core": "^7.13.8",
     "@babel/preset-env": "^7.13.9",
     "@babel/preset-react": "^7.12.13",
+    "babel-eslint": "^10.1.0",
     "babel-loader": "^8.2.2",
+    "case-sensitive-paths-webpack-plugin": "^2.4.0",
     "css-loader": "^5.1.1",
     "eslint": "^7.2.0",
     "eslint-config-airbnb": "^18.2.1",
@@ -39,8 +44,7 @@
     "style-loader": "^2.0.0",
     "webpack": "^5.25.0",
     "webpack-cli": "^4.5.0",
-    "webpack-dev-server": "^3.11.2",
-    "babel-eslint": "^10.1.0"
+    "webpack-dev-server": "^3.11.2"
   },
   "dependencies": {
     "axios": "^0.21.1",
