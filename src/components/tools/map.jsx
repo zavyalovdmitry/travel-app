@@ -10,7 +10,7 @@ export default function AppMap(props) {
   const langGet = `${props.lang}_RU`;
   const mapState = {
     center: props.Coordinates,
-    zoom: 4,
+    zoom: 6,
     controls: [],
   };
 
@@ -45,9 +45,10 @@ export default function AppMap(props) {
   };
 
   return (
-    <div className="App">
+    <div className="map">
       <YMaps query={{ lang: langGet }}>
-        <Map
+        <Map width={'100%'}
+        height={'100%'}
           // Создаем ссылку на инстанс мапа, чтобы использовать его
           instanceRef={mapRef}
           state={mapState}

@@ -14,9 +14,9 @@ const Search = (props) => {
     if (e.code === 'Enter') props.changeFilter(e.target.value);
   };
 
-  const placeHolder = props.lang === 0 
-                      ? 'Search' 
-                      : 'Поиск';
+  const placeHolder = props.lang === 0
+    ? 'Search'
+    : 'Поиск';
 
   return <div className="search">
     <input type="search" placeholder={placeHolder} defaultValue={value} onChange={(e) => changeValue(e.target.value)} ref={inputSearch} onKeyPress={(e) => checkInputKey(e)}/>
@@ -28,6 +28,7 @@ const Search = (props) => {
 
 Search.propTypes = {
   changeFilter: PropTypes.func.isRequired,
+  lang: PropTypes.number.isRequired,
 };
 
 export default Search;

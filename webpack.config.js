@@ -2,18 +2,14 @@ const path = require('path');
 const webpack = require('webpack');
 const ESLintPlugin = require('eslint-webpack-plugin');
 
-const rootModulePath = "./src/";
-const rootBundlePath = "./src/bundle/";
-const isDevBuild = true;
-var CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
+const rootModulePath = './src/';
+
+const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 
 module.exports = {
   stats: { modules: false },
-  resolve: {
-    extensions: ['.js', '.jsx', '.ts', '.tsx', '.css']
-  },
   entry: {
-    'DIG': rootModulePath + 'index.jsx'
+    DIG: `${rootModulePath}index.jsx`,
   },
   mode: 'development',
   output: {
@@ -34,7 +30,7 @@ module.exports = {
   ],
   devtool: 'inline-source-map',
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ['.js', '.jsx', '.ts', '.tsx', '.css'],
     modules: [path.resolve(__dirname, 'src'), 'node_modules'],
   },
   module: {

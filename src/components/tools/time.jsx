@@ -44,5 +44,5 @@ export default class Time extends Component {
 }
 
 Time.propTypes = {
-  UTC: PropTypes.number.isRequired,
+  UTC: PropTypes.string,
 };

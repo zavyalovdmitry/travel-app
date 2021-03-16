@@ -1,20 +1,24 @@
 import React from 'react';
-import logo from '../assets/image/logo.png';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import logo from '../assets/image/logo.png';
 
 const Logo = (props) => {
   const styles = {
     cursor: props.logoLink ? 'pointer' : 'default',
   };
 
-  return <div className="logo" onClick={() => (props.logoLink ? props.changeLink('main') : null)} style={styles}>
+  if (props.logoLink) {
+    return <Link className="logo" to='/' style={styles}><img src={logo} alt="" /></Link>;
+  }
+
+  return <div className="logo" style={styles}>
     <img src={logo} alt="" />
   </div>;
 };
 
 Logo.propTypes = {
   logoLink: PropTypes.bool.isRequired,
-  // changeLink: PropTypes.func.isRequired,
 };
 
 export default Logo;

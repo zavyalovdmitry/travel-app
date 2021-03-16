@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class LanguageToggle extends Component {
-
   toggleLanguage = (e) => {
-    this.props.toggleLang(+e.target.value)
+    this.props.toggleLang(+e.target.value);
   }
 
   render() {
-    // console.log(342)
-    return(
+    return (
     <div>
       <select onChange={this.toggleLanguage}>
         <option value="0">EN</option>
@@ -16,7 +15,12 @@ class LanguageToggle extends Component {
         <option value="2">BL</option>
       </select>
     </div>
-    )}
+    );
+  }
+}
+
+LanguageToggle.propTypes = {
+  toggleLang: PropTypes.func.isRequired,
 };
 
 export default LanguageToggle;

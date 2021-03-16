@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import CardCountry from './CardCountry';
 import PropTypes from 'prop-types';
+import CardCountry from './CardCountry';
 import CountryDataService from '../services/country.service';
 
 class CardsBoard extends Component {
@@ -23,16 +23,14 @@ class CardsBoard extends Component {
               name: 'blank',
               capital: 'blank',
             },
-          ]
+          ],
         },
       ],
     };
   }
 
   componentDidMount() {
-    // console.log(this.state.countries)
     this.retrieveCountries();
-    // console.log(this.state.countries)
   }
 
   retrieveCountries() {
@@ -41,7 +39,6 @@ class CardsBoard extends Component {
         this.setState({
           countries: response.data,
         });
-        // console.log(response.data);
       })
       .catch((e) => {
         console.log(e);
@@ -51,17 +48,19 @@ class CardsBoard extends Component {
   render() {
     return (
       <section className="cards-block">
-        { this.state.countries.map((el, id) => (el.localizations[this.props.lang].name.toLowerCase().includes(this.props.filterValue.toLowerCase())
-         || el.localizations[this.props.lang].capital.toLowerCase().includes(this.props.filterValue.toLowerCase()) 
-            ? <CardCountry
+        {// eslint-disable-next-line max-len
+        this.state.countries.map((el, id) => (el.localizations[this.props.lang].name.toLowerCase().includes(this.props.filterValue.toLowerCase())
+         // eslint-disable-next-line max-len
+         || el.localizations[this.props.lang].capital.toLowerCase().includes(this.props.filterValue.toLowerCase())
+          ? <CardCountry
                 key={id}
                 nameCountry={el.localizations[this.props.lang].name}
                 capitalCountry={el.localizations[this.props.lang].capital}
-                changeLink={this.props.changeLink}
+                // eslint-disable-next-line no-underscore-dangle
                 id={el._id}
                 imgSrc={el.imageUrl}
-              /> 
-            : null))
+              />
+          : null))
         }
       </section>
     );
@@ -69,8 +68,8 @@ class CardsBoard extends Component {
 }
 
 CardsBoard.propTypes = {
-  // changeLink: PropTypes.func.isRequired,
   filterValue: PropTypes.string.isRequired,
+  lang: PropTypes.number.isRequired,
 };
 
 export default CardsBoard;

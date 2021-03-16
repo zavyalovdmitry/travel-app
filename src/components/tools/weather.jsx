@@ -33,10 +33,8 @@ export default class Weather extends Component {
         const temp = Math.round(WeatherData.main.temp - 273);
         return (
                 <div className='weather'>
-                    <div>{name}</div>
                     <img src={`http://openweathermap.org/img/wn/${WeatherData.weather[0].icon}@2x.png`} />
-                    <div>{ `${(+temp > 0) ? (`+${temp}`) : temp}C`}</div>
-                    <div>{WeatherData.weather[0].description}</div>
+                    <div>{ `${(+temp > 0) ? (`+${temp}`) : temp}C`} ({WeatherData.weather[0].description})</div>
 
                 </div>
         );

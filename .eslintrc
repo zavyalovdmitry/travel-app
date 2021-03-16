@@ -6,8 +6,9 @@
     "plugin:react/recommended"
   ],
   "rules": {
-    // "linebreak-style": ["error", "windows"],
-    "import/no-unresolved": "off"
+     "linebreak-style": ["error", "windows"],
+    "import/no-unresolved": "off",
+    "import/extensions" : "off"
   },
   "env": {
     "browser": true,

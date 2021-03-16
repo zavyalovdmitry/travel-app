@@ -1,5 +1,5 @@
+/* eslint-disable no-underscore-dangle */
 import React, { Component } from 'react';
-import logo from '../assets/image/1.jpg';
 import PropTypes from 'prop-types';
 import Time from './tools/time';
 import Weather from './tools/weather';
@@ -15,13 +15,13 @@ class DetailPage extends Component {
     this.state = {
       dataLoaded: false,
       placesLoaded: false,
-      country: 
+      country:
         {
           capitalLocation: {
             coordinates:
             [
-              0, 0
-            ]
+              0, 0,
+            ],
           },
           id: 1,
           ISOCode: '',
@@ -42,7 +42,7 @@ class DetailPage extends Component {
               capital: 'blank',
               lang: '',
             },
-          ]
+          ],
         },
       legend: [
         {
@@ -62,19 +62,17 @@ class DetailPage extends Component {
             {
               lang: '',
               description: '',
-              name: 'blank'
-            }
-          ]
-        }
-      ]
+              name: 'blank',
+            },
+          ],
+        },
+      ],
     };
   }
 
   componentDidMount() {
-    // console.log(this.state.country);
     this.getCountry();
-    this.getPlaces()
-    // console.log(999, this.state.country.currency);
+    this.getPlaces();
   }
 
   getCountry() {
@@ -90,20 +88,6 @@ class DetailPage extends Component {
       });
   }
 
-  // retrievePlaces() {
-  //   PlaceDataService.getAll()
-  //     .then((response) => {
-  //       this.setState({
-  //         places: response.data,
-  //         placesLoaded: true
-  //       });
-  //       // console.log(response.data);
-  //     })
-  //     .catch((e) => {
-  //       console.log(e);
-  //     });
-  // }
-
   getPlaces() {
     PlaceDataService.get(this.props.id)
       .then((response) => {
@@ -111,9 +95,6 @@ class DetailPage extends Component {
           places: response.data,
           placesLoaded: true,
         });
-        
-        // console.log(this.state.country);
-        // console.log(999, this.state.country.currency);
       })
       .catch((e) => {
         console.log(e);
@@ -121,49 +102,58 @@ class DetailPage extends Component {
   }
 
   render() {
+    const exchangeLoad = <ExchangeRates currency={this.state.country.currency}/>;
+    const mapLoad = <AppMap Country={this.state.country.ISOCode}
+    Coordinates={this.state.country.capitalLocation.coordinates}
+    lang={this.state.country.localizations[this.props.lang].lang}/>;
 
-    const exchangeLoad = <ExchangeRates currency={this.state.country.currency}/>
-    const mapLoad = <AppMap Country={this.state.country.ISOCode} Coordinates={this.state.country.capitalLocation.coordinates} lang={this.state.country.localizations[this.props.lang].lang}/>
     const timeLoad = <Time UTC={this.state.country.UTC}/>;
-    const weatherLoad = <Weather lat={this.state.country.capitalLocation.coordinates[0]} lon={this.state.country.capitalLocation.coordinates[1]} lang={this.state.country.localizations[this.props.lang].lang}/>;
+    const weatherLoad = <Weather lat={this.state.country.capitalLocation.coordinates[0]}
+    lon={this.state.country.capitalLocation.coordinates[1]}
+    lang={this.state.country.localizations[this.props.lang].lang}/>;
+
     const galleryLoad = <Gallery arrAttractions={this.state.places} lang={this.props.lang}/>;
 
     return (
      <section className="detail-page">
         <h1>Information about country</h1>
         <article className="info-country">
+
+          <div className="info-wrap">
           <div className="img-wrap">
             <img src={this.state.country.imageUrl} alt={this.state.country._id} width="300" />
           </div>
-          <div className="info-wrap">
-            <h2>{this.state.country.localizations[this.props.lang].name}</h2>
-            <h3>{this.state.legend[this.props.lang].capital}{this.state.country.localizations[this.props.lang].capital}</h3>
-            <p>{this.state.country.localizations[this.props.lang].description}</p>
+          <div className="info">
+          <h2>{this.state.country.localizations[this.props.lang].name}</h2>
+            <h3>{this.state.legend[this.props.lang].capital}
+            {this.state.country.localizations[this.props.lang].capital}</h3>
+            <div className="vidgets">
+            {this.state.dataLoaded ? timeLoad : ''}
+            {this.state.dataLoaded ? weatherLoad : ''}
+            {this.state.dataLoaded ? exchangeLoad : ''}
+            </div>
           </div>
+          </div>
+          <p className="description">{this.state.country.localizations[this.props.lang].description}</p>
         </article>
         <article className="country-common-info">
-          <div>
-            {this.state.dataLoaded ? timeLoad : ''}
-            {this.state.dataLoaded ? exchangeLoad : ''}
-          </div>
-          <div>
-            {this.state.dataLoaded ? weatherLoad : ''}
-          </div>
-          <div>
+
             {this.state.dataLoaded ? mapLoad : ''}
-          </div>
+
         </article>
         <article>
           {this.state.placesLoaded ? galleryLoad : ''}
         </article>
-        {/* {this.props.pr} */}
      </section>
     );
   }
 }
 
-// DetailPage.propTypes = {
-//   pr: PropTypes.string.isRequired,
-// };
+DetailPage.propTypes = {
+  lang: PropTypes.number.isRequired,
+  Coordinates: PropTypes.array,
+  Country: PropTypes.string,
+  id: PropTypes.string,
+};
 
 export default DetailPage;
