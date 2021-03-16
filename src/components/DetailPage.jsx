@@ -73,7 +73,7 @@ class DetailPage extends Component {
   componentDidMount() {
     // console.log(this.state.country);
     this.getCountry();
-    this.retrievePlaces()
+    this.getPlaces()
     // console.log(999, this.state.country.currency);
   }
 
@@ -84,6 +84,33 @@ class DetailPage extends Component {
           country: response.data,
           dataLoaded: true,
         });
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }
+
+  // retrievePlaces() {
+  //   PlaceDataService.getAll()
+  //     .then((response) => {
+  //       this.setState({
+  //         places: response.data,
+  //         placesLoaded: true
+  //       });
+  //       // console.log(response.data);
+  //     })
+  //     .catch((e) => {
+  //       console.log(e);
+  //     });
+  // }
+
+  getPlaces() {
+    PlaceDataService.get(this.props.id)
+      .then((response) => {
+        this.setState({
+          places: response.data,
+          placesLoaded: true,
+        });
         
         // console.log(this.state.country);
         // console.log(999, this.state.country.currency);
@@ -93,71 +120,7 @@ class DetailPage extends Component {
       });
   }
 
-  retrievePlaces() {
-    PlaceDataService.getAll()
-      .then((response) => {
-        this.setState({
-          places: response.data,
-          placesLoaded: true
-        });
-        // console.log(response.data);
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-  }
-
-  // getPlaces() {
-  //   PlaceDataService.get(this.props.id)
-  //     .then((response) => {
-  //       this.setState({
-  //         country: response.data,
-  //         dataLoaded: true,
-  //       });
-        
-  //       // console.log(this.state.country);
-  //       // console.log(999, this.state.country.currency);
-  //     })
-  //     .catch((e) => {
-  //       console.log(e);
-  //     });
-  // }
-
   render() {
-
-    // console.log(this.props.id);
-    // const arrAttractions = [
-    //   {
-    //     photo: 'https://lh3.googleusercontent.com/proxy/54OpyWgRhH6udhorfHTgBYhr0PdTf54tc3mOKKJD6sg7FfyegKS7MKhXRDm-2miXBykY3t0JWpEmpCVKcaCveF4',
-    //     description: 'sdfdsf',
-    //     name: 'sdfsdf',
-    //   },
-    //   {
-    //     photo: 'https://lh3.googleusercontent.com/proxy/54OpyWgRhH6udhorfHTgBYhr0PdTf54tc3mOKKJD6sg7FfyegKS7MKhXRDm-2miXBykY3t0JWpEmpCVKcaCveF4',
-    //     description: 'sdfdsf',
-    //     name: 'sdfsdf',
-    //   },
-    //   {
-    //     photo: 'https://lh3.googleusercontent.com/proxy/54OpyWgRhH6udhorfHTgBYhr0PdTf54tc3mOKKJD6sg7FfyegKS7MKhXRDm-2miXBykY3t0JWpEmpCVKcaCveF4',
-    //     description: 'sdfdsf',
-    //     name: 'sdfsdf',
-    //   },
-    //   {
-    //     photo: 'https://lh3.googleusercontent.com/proxy/54OpyWgRhH6udhorfHTgBYhr0PdTf54tc3mOKKJD6sg7FfyegKS7MKhXRDm-2miXBykY3t0JWpEmpCVKcaCveF4',
-    //     description: 'sdfdsf',
-    //     name: 'sdfsdf',
-    //   },
-    //   {
-    //     photo: 'https://lh3.googleusercontent.com/proxy/54OpyWgRhH6udhorfHTgBYhr0PdTf54tc3mOKKJD6sg7FfyegKS7MKhXRDm-2miXBykY3t0JWpEmpCVKcaCveF4',
-    //     description: 'sdfdsf',
-    //     name: 'sdfsdf',
-    //   },
-    //   {
-    //     photo: 'https://lh3.googleusercontent.com/proxy/54OpyWgRhH6udhorfHTgBYhr0PdTf54tc3mOKKJD6sg7FfyegKS7MKhXRDm-2miXBykY3t0JWpEmpCVKcaCveF4',
-    //     description: 'sdfdsf',
-    //     name: 'sdfsdf',
-    //   },
-    // ];
 
     const exchangeLoad = <ExchangeRates currency={this.state.country.currency}/>
     const mapLoad = <AppMap Country={this.state.country.ISOCode} Coordinates={this.state.country.capitalLocation.coordinates} lang={this.state.country.localizations[this.props.lang].lang}/>

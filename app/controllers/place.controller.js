@@ -55,21 +55,25 @@ exports.findAll = (req, res) => {
     });
 };
 
+
+
 // Find a single Country with an id
 exports.findOne = (req, res) => {
   const { id } = req.params;
 
-  Place.findById(id)
+  Place.find({countryId: id})
     .then((data) => {
-      if (!data) res.status(404).send({ message: `Not found Place with id ${id}` });
+      if (!data) res.status(404).send({ message: `Not found Place with contryId ${id}` });
       else res.send(data);
     })
     .catch(() => {
       res
         .status(500)
-        .send({ message: `Error retrieving Place with id=${id}` });
+        .send({ message: `Error retrieving Place with contryId=${id}` });
     });
 };
+
+
 
 // Update a Country by the id in the request
 exports.update = (req, res) => {
