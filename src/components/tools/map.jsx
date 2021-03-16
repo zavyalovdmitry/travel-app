@@ -13,7 +13,6 @@ export default function AppMap(props) {
 
   useEffect(()=>{
       setLang((langList.includes(props.lang))? `${props.lang}_RU`: `ru_RU`);
-      console.log(lang);
   },[props.lang]);
 
 
