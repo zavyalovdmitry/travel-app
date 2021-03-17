@@ -6,14 +6,17 @@ import axios from 'axios';
 // /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\
 
 // ============ deploy ============
-const PORT = process.env.PORT || 8081;
-const addr = 'https://super-best-travel-app.herokuapp.com'
-// /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ 
+// const PORT = process.env.PORT || 8081;
+const addr = 'http://super-best-travel-app.herokuapp.com';
+// /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\
 
 export default axios.create({
 
   // baseURL: 'http://localhost:8081/api',
-  baseURL: `${addr}:${PORT}/api`,
+
+  // baseURL: `${addr}:${PORT}/api`,
+  baseURL: `${addr}/api`,
+
   headers: {
     'Content-type': 'application/json',
   },
