@@ -103,7 +103,8 @@ class DetailPage extends Component {
   }
 
   render() {
-    const exchangeLoad = <ExchangeRates currency={this.state.country.currency}/>;
+    const exchangeLoad = <ExchangeRates currency={this.state.country.currency}
+                                        lang={this.props.lang}/>;
     const mapLoad = <AppMap Country={this.state.country.ISOCode}
     Coordinates={this.state.country.capitalLocation.coordinates}
     lang={this.state.country.localizations[this.props.lang].lang}/>;

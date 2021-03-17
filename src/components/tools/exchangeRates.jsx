@@ -4,13 +4,15 @@ import Currency from './Currency';
 
 export default class ExchangeRates extends Component {
   render() {
-    const { currency } = this.props;
+    const { currency, lang } = this.props;
+    const currencyList = ['EUR', 'USD', 'RUB'];
+    const currencyOutput = currencyList.map(
+      (curr) => <Currency arrives={currency} key={curr} out={curr} lang={lang}/>,
+    );
 
     return (
             <div>
-                <Currency arrives={currency} out={'EUR'}/>
-                <Currency arrives={currency} out={'USD'}/>
-                <Currency arrives={currency} out={'RUB'}/>
+               {currencyOutput}
             </div>
     );
   }
@@ -18,4 +20,5 @@ export default class ExchangeRates extends Component {
 
 ExchangeRates.propTypes = {
   currency: PropTypes.string.isRequired,
+  lang: PropTypes.number.isRequired,
 };
