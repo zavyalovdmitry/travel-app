@@ -137,7 +137,10 @@ class DetailPage extends Component {
             </div>
           </div>
           </div>
-          <p className="description">{this.state.country.localizations[this.props.lang].description}</p>
+          <div className="about">
+            {this.state.dataLoaded ? videoLoad : ''}
+            <p className="description">{this.state.country.localizations[this.props.lang].description}</p>
+          </div>
         </article>
 
         <article className="country-common-info">
@@ -146,10 +149,6 @@ class DetailPage extends Component {
 
         <article>
           {this.state.placesLoaded ? galleryLoad : ''}
-        </article>
-
-        <article>
-            {this.state.dataLoaded ? videoLoad : ''}
         </article>
 
      </section>
