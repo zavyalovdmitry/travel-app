@@ -9,7 +9,7 @@ class LanguageToggle extends Component {
   render() {
     return (
     <div>
-      <select onChange={this.toggleLanguage}>
+      <select onChange={this.toggleLanguage} value={this.props.lang}>
         <option value="0">EN</option>
         <option value="1">RU</option>
         <option value="2">BL</option>
@@ -21,6 +21,7 @@ class LanguageToggle extends Component {
 
 LanguageToggle.propTypes = {
   toggleLang: PropTypes.func.isRequired,
+  lang: PropTypes.number.isRequired,
 };
 
 export default LanguageToggle;
