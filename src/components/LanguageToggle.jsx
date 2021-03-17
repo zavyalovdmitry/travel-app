@@ -12,7 +12,7 @@ class LanguageToggle extends Component {
       <select onChange={this.toggleLanguage}>
         <option value="0">EN</option>
         <option value="1">RU</option>
-        <option value="2">BL</option>
+        <option value="2">BY</option>
       </select>
     </div>
     );

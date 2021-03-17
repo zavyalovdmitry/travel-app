@@ -4,9 +4,13 @@ const cors = require('cors');
 
 const app = express();
 
+// ============ deploy ============
+const addr = 'https://super-best-travel-app.herokuapp.com'
+
 const corsOptions = {
   // origin: "http://localhost:8081"
   origin: 'http://localhost:8080',
+  // origin: `${addr}:8080`,
 };
 
 app.use(cors(corsOptions));

@@ -7,6 +7,7 @@ const rootModulePath = './src/';
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 
 module.exports = {
+  target: 'node',
   stats: { modules: false },
   entry: {
     DIG: `${rootModulePath}index.jsx`,
@@ -30,6 +31,25 @@ module.exports = {
   ],
   devtool: 'inline-source-map',
   resolve: {
+    fallback: {
+      "fs": false,
+      "tls": false,
+      "net": false,
+      "path": false,
+      "zlib": false,
+      "http": false,
+      "https": false,
+      "stream": false,
+      "crypto": false,
+      "destroy": false,
+      "etag": false,
+      "mime": false,
+      "mime-types": false,
+      "safe-buffer": false,
+      "send": false,
+      "serve-static": false,
+      "swiper": false
+    },  
     extensions: ['.js', '.jsx', '.ts', '.tsx', '.css'],
     modules: [path.resolve(__dirname, 'src'), 'node_modules'],
   },
