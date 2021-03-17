@@ -8,6 +8,11 @@ export default class Weather extends Component {
       WeatherData: {},
     };
   }
+  componentDidUpdate(prevProps){
+    if(prevProps.lang!==this.props.lang){
+      this.wetherGet();
+    }
+  }
 
   componentDidMount() {
     this.wetherGet();
@@ -29,7 +34,6 @@ export default class Weather extends Component {
       const { WeatherData } = this.state;
 
       if (WeatherData && WeatherData.weather) {
-        const { name } = WeatherData;
         const temp = Math.round(WeatherData.main.temp - 273);
         return (
                 <div className='weather'>
