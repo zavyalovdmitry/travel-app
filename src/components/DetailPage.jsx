@@ -6,6 +6,7 @@ import Weather from './tools/weather';
 import AppMap from './tools/map';
 import ExchangeRates from './tools/exchangeRates';
 import Gallery from './Gallery';
+import Video from './Video';
 import CountryDataService from '../services/country.service';
 import PlaceDataService from '../services/place.service';
 
@@ -109,14 +110,15 @@ class DetailPage extends Component {
 
     const timeLoad = <Time UTC={this.state.country.UTC}/>;
     const weatherLoad = <Weather lat={this.state.country.capitalLocation.coordinates[0]}
-    lon={this.state.country.capitalLocation.coordinates[1]}
-    lang={this.state.country.localizations[this.props.lang].lang}/>;
-
+                                 lon={this.state.country.capitalLocation.coordinates[1]}
+                                 lang={this.state.country.localizations[this.props.lang].lang}/>;
     const galleryLoad = <Gallery arrAttractions={this.state.places} lang={this.props.lang}/>;
+    const videoLoad = <Video videoUrl={this.state.country.videoUrl}/>;
 
     return (
      <section className="detail-page">
         <h1>Information about country</h1>
+
         <article className="info-country">
 
           <div className="info-wrap">
@@ -136,14 +138,19 @@ class DetailPage extends Component {
           </div>
           <p className="description">{this.state.country.localizations[this.props.lang].description}</p>
         </article>
+
         <article className="country-common-info">
-
             {this.state.dataLoaded ? mapLoad : ''}
-
         </article>
+
         <article>
           {this.state.placesLoaded ? galleryLoad : ''}
         </article>
+
+        <article>
+            {this.state.dataLoaded ? videoLoad : ''}
+        </article>
+
      </section>
     );
   }

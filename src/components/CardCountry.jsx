@@ -18,7 +18,7 @@ const CardCountry = ({
 CardCountry.propTypes = {
   nameCountry: PropTypes.string.isRequired,
   capitalCountry: PropTypes.string.isRequired,
-  id: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
   imgSrc: PropTypes.string.isRequired,
 };
 
