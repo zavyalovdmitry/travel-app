@@ -109,11 +109,19 @@ class DetailPage extends Component {
     Coordinates={this.state.country.capitalLocation.coordinates}
     lang={this.state.country.localizations[this.props.lang].lang}/>;
 
-    const timeLoad = <Time UTC={this.state.country.UTC}/>;
+    const timeLoad = <Time UTC={this.state.country.UTC} 
+                          lang={this.props.lang}/>;
     const weatherLoad = <Weather lat={this.state.country.capitalLocation.coordinates[0]}
                                  lon={this.state.country.capitalLocation.coordinates[1]}
                                  lang={this.state.country.localizations[this.props.lang].lang}/>;
-    const galleryLoad = <Gallery arrAttractions={this.state.places} lang={this.props.lang}/>;
+    const galleryLoad = <>
+                          <Gallery arrAttractions={this.state.places} lang={this.props.lang}/>
+                          <br></br>
+                          <p>{this.props.lang === 0 
+                          ? '* Double click gallery to go fullscreen mode'
+                          : this.props.lang === 1 ? '* Двойной клик по галерее для перехода в полноэкранный режим'
+                          : '* Двайны клік па галерэі для пераходу ў поўнаэкранны рэжым'}</p>
+                        </>;
     const videoLoad = <Video videoUrl={this.state.country.videoUrl}/>;
 
     return (

@@ -5,7 +5,7 @@ const Footer = () => (
   <footer>
     <p className="creators">
       {' '}
-      <span>Created by </span>
+      <span>© 2021</span>
       <a href="https://github.com/antoniosk10">Anton Skorobogaty</a>
       <a href="https://github.com/fpastl">Stas Smoliar</a>
       <a href="https://github.com/zavyalovdmitry">Dmitry Zavyalov</a>
