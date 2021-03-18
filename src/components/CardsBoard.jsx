@@ -26,6 +26,7 @@ class CardsBoard extends Component {
           ],
         },
       ],
+      dataLoaded: false,
     };
   }
 
@@ -38,6 +39,7 @@ class CardsBoard extends Component {
       .then((response) => {
         this.setState({
           countries: response.data,
+          dataLoaded: true,
         });
       })
       .catch((e) => {
@@ -52,6 +54,7 @@ class CardsBoard extends Component {
         this.state.countries.map((el, id) => (el.localizations[this.props.lang].name.toLowerCase().includes(this.props.filterValue.toLowerCase())
          // eslint-disable-next-line max-len
          || el.localizations[this.props.lang].capital.toLowerCase().includes(this.props.filterValue.toLowerCase())
+          ? this.state.dataLoaded 
           ? <CardCountry
                 key={id}
                 nameCountry={el.localizations[this.props.lang].name}
@@ -60,6 +63,7 @@ class CardsBoard extends Component {
                 id={el._id}
                 imgSrc={el.imageUrl}
               />
+          : 'Loading data...'
           : null))
         }
       </section>

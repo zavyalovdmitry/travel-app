@@ -16,7 +16,8 @@ const Search = (props) => {
 
   const placeHolder = props.lang === 0
     ? 'Search'
-    : 'Поиск';
+    : props.lang === 1 ? 'Поиск'
+    : 'Пошук';
 
   return <div className="search">
     <input type="search" placeholder={placeHolder} defaultValue={value} onChange={(e) => changeValue(e.target.value)} ref={inputSearch} onKeyPress={(e) => checkInputKey(e)}/>
