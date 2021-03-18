@@ -8,8 +8,9 @@ export default class Weather extends Component {
       WeatherData: {},
     };
   }
-  componentDidUpdate(prevProps){
-    if(prevProps.lang!==this.props.lang){
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.lang !== this.props.lang) {
       this.wetherGet();
     }
   }
@@ -47,6 +48,8 @@ export default class Weather extends Component {
     }
 }
 
-// Weather.propTypes = {
-//   city: PropTypes.number.isRequired,
-// };
+Weather.propTypes = {
+  lang: PropTypes.string.isRequired,
+  lat: PropTypes.number.isRequired,
+  lon: PropTypes.number.isRequired,
+};

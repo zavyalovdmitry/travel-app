@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   YMaps, Map, FullscreenControl, Placemark, ZoomControl,
 } from 'react-yandex-maps';
@@ -6,15 +6,15 @@ import PropTypes from 'prop-types';
 
 export default function AppMap(props) {
   const COLOR = '#49C0B5';
-  const langList= ['en','ru','uk','tr'];
+  const langList = ['en', 'ru', 'uk', 'tr'];
   const mapRef = React.createRef(null);
   const [lang, setLang] = useState(
-    (langList.includes(props.lang))? `${props.lang}_RU`: `ru_RU`);
+    (langList.includes(props.lang)) ? `${props.lang}_RU` : 'ru_RU',
+  );
 
-  useEffect(()=>{
-      setLang((langList.includes(props.lang))? `${props.lang}_RU`: `ru_RU`);
-  },[props.lang]);
-
+  useEffect(() => {
+    setLang((langList.includes(props.lang)) ? `${props.lang}_RU` : 'ru_RU');
+  }, [props.lang]);
 
   const mapState = {
     center: props.Coordinates,
@@ -54,7 +54,7 @@ export default function AppMap(props) {
 
   return (
     <div className="map">
-      <YMaps key={lang} query={{ lang: lang }}>
+      <YMaps key={lang} query={{ lang }}>
         <Map width={'100%'}
         height={'100%'}
           // Создаем ссылку на инстанс мапа, чтобы использовать его

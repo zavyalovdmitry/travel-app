@@ -11,7 +11,7 @@ class Header extends Component {
     <Logo logoLink={this.props.logoLink}/>
     {this.props.searchVisible ? <Search lang={this.props.lang}
     changeFilter={this.props.changeFilter}/> : null}
-    <LanguageToggle toggleLang={this.props.toggleLang}/>
+    <LanguageToggle toggleLang={this.props.toggleLang} lang={this.props.lang}/>
   </header>
     );
   }

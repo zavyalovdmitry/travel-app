@@ -16,10 +16,10 @@ const CardCountry = ({
 );
 
 CardCountry.propTypes = {
-  nameCountry: PropTypes.string.isRequired,
-  capitalCountry: PropTypes.string.isRequired,
-  id: PropTypes.number.isRequired,
-  imgSrc: PropTypes.string.isRequired,
+  nameCountry: PropTypes.string,
+  capitalCountry: PropTypes.string,
+  id: PropTypes.string,
+  imgSrc: PropTypes.string,
 };
 
 export default CardCountry;
