@@ -200,6 +200,11 @@ footer {
   
 }
 
+.card-country:hover .card-country__content {
+  transform: scale(1.5);
+  transition: 0.8s;
+}
+
 .country-common-info {
   display: flex;
   justify-content: space-around;
