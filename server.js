@@ -20,10 +20,9 @@ const addr = 'http://zavyalovdmitry-travel-app.herokuapp.com'
 
 const corsOptions = {
   // origin: "http://localhost:8081"
-  
   // origin: 'http://localhost:8080',
 
-  origin: 'https://zavyalovdmitry-travel-app.netlify.app',
+  // origin: 'https://zavyalovdmitry-travel-app.netlify.app',
 
   // origin: `${addr}:8080`,
 };
