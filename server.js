@@ -16,7 +16,7 @@ const PORT = process.env.PORT || 8081;
 app.use(express.static(path));
 // -----------------------------------------
 
-const addr = 'http://zavyalovdmitry-travel-app.herokuapp.com'
+const addr = 'https://zavyalovdmitry-travel-app.herokuapp.com'
 
 const corsOptions = {
   // origin: "http://localhost:8081"

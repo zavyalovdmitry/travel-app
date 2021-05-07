@@ -7,7 +7,7 @@ import axios from 'axios';
 
 // ============ deploy ============
 // const PORT = process.env.PORT || 8081;
-const addr = 'http://zavyalovdmitry-travel-app.herokuapp.com';
+const addr = 'https://zavyalovdmitry-travel-app.herokuapp.com';
 // /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\
 
 export default axios.create({
