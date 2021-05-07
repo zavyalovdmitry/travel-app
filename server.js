@@ -2,10 +2,21 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
+// -----------------------------------------
+const path = __dirname + '/app/views/';
+// -----------------------------------------
+
 const app = express();
 
-// ============ deploy ============
-const addr = 'https://super-best-travel-app.herokuapp.com'
+// set port, listen for requests
+// const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8081;
+
+// -----------------------------------------
+app.use(express.static(path));
+// -----------------------------------------
+
+const addr = 'http://zavyalovdmitry-travel-app.herokuapp.com'
 
 const corsOptions = {
   // origin: "http://localhost:8081"
@@ -22,6 +33,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 const db = require('./app/models');
+
+// -----------------------------------------
+app.get('/', function (req,res) {
+  res.sendFile(path + "index.html");
+});
+// -----------------------------------------
 
 db.mongoose
   .connect(db.url, {
@@ -46,7 +63,7 @@ require('./app/routes/place.routes')(app);
 
 // set port, listen for requests
 // const PORT = process.env.PORT || 8080;
-const PORT = process.env.PORT || 8081;
+// const PORT = process.env.PORT || 8081;
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
