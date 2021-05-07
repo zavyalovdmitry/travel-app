@@ -5,6 +5,7 @@ const ESLintPlugin = require('eslint-webpack-plugin');
 const rootModulePath = './src/';
 
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   target: 'node',
@@ -28,6 +29,9 @@ module.exports = {
     new CaseSensitivePathsPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new ESLintPlugin(),
+    new HtmlWebpackPlugin({
+      template: './index.html'
+    }),
   ],
   devtool: 'inline-source-map',
   resolve: {
