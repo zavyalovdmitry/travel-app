@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-// const cors = require('cors');
+const cors = require('cors');
 
 // -----------------------------------------
 const path = __dirname + '/app/views/';
@@ -18,13 +18,17 @@ app.use(express.static(path));
 
 const addr = 'http://zavyalovdmitry-travel-app.herokuapp.com'
 
-// const corsOptions = {
-//   // origin: "http://localhost:8081"
-//   origin: 'http://localhost:8080',
-//   // origin: `${addr}:8080`,
-// };
+const corsOptions = {
+  // origin: "http://localhost:8081"
+  
+  // origin: 'http://localhost:8080',
 
-// app.use(cors(corsOptions));
+  origin: 'https://zavyalovdmitry-travel-app.netlify.app',
+
+  // origin: `${addr}:8080`,
+};
+
+app.use(cors(corsOptions));
 
 // parse requests of content-type - application/json
 app.use(bodyParser.json());
