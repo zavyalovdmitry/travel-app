@@ -14,14 +14,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/antoniosk10/travel-app.git"
+    "url": "https://github.com/zavyalovdmitry/travel-app.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/antoniosk10/travel-app/issues"
+    "url": "https://github.com/zavyalovdmitry/travel-app/issues"
   },
-  "homepage": "https://github.com/antoniosk10/travel-app#readme",
+  "homepage": "https://github.com/zavyalovdmitry/travel-app#readme",
   "devDependencies": {
     "@babel/cli": "^7.1.0",
     "@babel/core": "^7.13.8",
@@ -31,14 +31,17 @@
     "babel-loader": "^8.2.2",
     "case-sensitive-paths-webpack-plugin": "^2.4.0",
     "css-loader": "^5.1.1",
-    "eslint": "^7.2.0",
+    "eslint": "^7.26.0",
     "eslint-config-airbnb": "^18.2.1",
-    "eslint-plugin-import": "^2.22.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.23.0",
     "eslint-plugin-jsx-a11y": "^6.4.1",
-    "eslint-plugin-react": "^7.21.5",
-    "eslint-plugin-react-hooks": "^1.7.0",
-    "eslint-webpack-plugin": "^2.5.2",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-react": "^7.23.2",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "eslint-webpack-plugin": "^2.5.4",
     "file-loader": "^6.2.0",
+    "prettier": "^2.3.0",
     "sass": "^1.32.8",
     "sass-loader": "^11.0.1",
     "style-loader": "^2.0.0",
@@ -59,6 +62,7 @@
     "react-crud": "0.0.1",
     "react-dom": "^17.0.1",
     "react-full-screen": "^1.0.1",
+    "react-loading-skeleton": "^2.2.0",
     "react-router-dom": "^5.2.0",
     "react-yandex-maps": "^4.6.0",
     "swiper": "^6.5.0"

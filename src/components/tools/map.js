@@ -1,25 +1,22 @@
 import React, { useState, useEffect } from 'react';
-import {
-  YMaps, Map, FullscreenControl, Placemark, ZoomControl,
-} from 'react-yandex-maps';
+import { YMaps, Map, FullscreenControl, Placemark, ZoomControl } from 'react-yandex-maps';
 import PropTypes from 'prop-types';
-
+/* eslint-disable */
 export default function AppMap(props) {
   const COLOR = '#49C0B5';
   const langList = ['en', 'ru', 'uk', 'tr'];
   const mapRef = React.createRef(null);
-  const [lang, setLang] = useState(
-    (langList.includes(props.lang)) ? `${props.lang}_RU` : 'ru_RU',
-  );
+  const { lang: langProp, Coordinates, Country } = props;
+  const [lang, setLang] = useState(langList.includes(langProp) ? `${langProp}_RU` : 'ru_RU');
 
   useEffect(() => {
-    setLang((langList.includes(props.lang)) ? `${props.lang}_RU` : 'ru_RU');
-  }, [props.lang]);
+    setLang(langList.includes(langProp) ? `${langProp}_RU` : 'ru_RU');
+  }, [langProp]);
 
   const mapState = {
-    center: props.Coordinates,
+    center: Coordinates,
     zoom: 6,
-    controls: [],
+    controls: []
   };
 
   const getRegions = (ymaps) => {
@@ -28,19 +25,18 @@ export default function AppMap(props) {
       ymaps.borders
         .load('001', {
           lang: 'ru',
-          quality: 2,
+          quality: 2
         })
         .then((result) => {
           const countrysAll = result.features;
 
-          /* eslint-disable-next-line */
           for (const value of countrysAll) {
-            if (value.properties.iso3166 === props.Country) {
+            if (value.properties.iso3166 === Country) {
               value.id = value.properties.iso3166;
               value.options = {
                 fillOpacity: 0.6,
                 strokeColor: '#FFF',
-                strokeOpacity: 0.5,
+                strokeOpacity: 0.5
               };
               value.options.fillColor = COLOR;
               objectManager.add(value);
@@ -55,19 +51,18 @@ export default function AppMap(props) {
   return (
     <div className="map">
       <YMaps key={lang} query={{ lang }}>
-        <Map width={'100%'}
-        height={'100%'}
-          // Создаем ссылку на инстанс мапа, чтобы использовать его
+        <Map
+          width="100%"
+          height="100%"
           instanceRef={mapRef}
           state={mapState}
-          // Используем коллбэк функцию при загрузке карты
           onLoad={(ymaps) => getRegions(ymaps)}
-          // Подключаем модули регионов и ObjectManager
-          modules={['borders', 'ObjectManager']}>
-               <FullscreenControl />
-                <ZoomControl />
-                <Placemark defaultGeometry={props.Coordinates} />
-          </Map>
+          modules={['borders', 'ObjectManager']}
+        >
+          <FullscreenControl />
+          <ZoomControl />
+          <Placemark defaultGeometry={Coordinates} />
+        </Map>
       </YMaps>
     </div>
   );
@@ -76,5 +71,5 @@ export default function AppMap(props) {
 AppMap.propTypes = {
   lang: PropTypes.string.isRequired,
   Coordinates: PropTypes.array.isRequired,
-  Country: PropTypes.string.isRequired,
+  Country: PropTypes.string.isRequired
 };

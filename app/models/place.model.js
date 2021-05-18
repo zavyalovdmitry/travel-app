@@ -1,4 +1,3 @@
-
 const { Schema, model } = require('mongoose');
 
 const placeLocaleSchema = new Schema({
@@ -13,7 +12,7 @@ const placeLocaleSchema = new Schema({
 
   module.exports = mongoose => {
     const Place = mongoose.model(
-      "place",
+      'place',
       mongoose.Schema(
         {
           countryId: {

@@ -1,17 +1,17 @@
 /* eslint-disable class-methods-use-this */
-import http from 'http-common';
+import http from '../http-common';
 
 class CountryDataService {
+  create(data) {
+    return http.post('/countries', data);
+  }
+
   getAll() {
     return http.get('/countries');
   }
 
   get(id) {
     return http.get(`/countries/${id}`);
-  }
-
-  create(data) {
-    return http.post('/countries', data);
   }
 
   update(id, data) {
@@ -24,10 +24,6 @@ class CountryDataService {
 
   deleteAll() {
     return http.delete('/countries');
-  }
-
-  findByTitle(title) {
-    return http.get(`/countries?title=${title}`);
   }
 }
 

@@ -13,7 +13,8 @@ export default class Currency extends Component {
     const access = `${arrives}_${out}`;
     const urlQuery = `https://free.currconv.com/api/v7/convert?q=${access}&compact=ultra&apiKey=327a6ca3039328c74676`;
 
-    fetch(urlQuery).then((data) => data.json())
+    fetch(urlQuery)
+      .then((data) => data.json())
       .then((data) => {
         const currency = data[access] ? `1${arrives}=${data[access]}${out}` : NotConnection[lang];
         this.setState({ data: currency });
@@ -21,16 +22,13 @@ export default class Currency extends Component {
   }
 
   render() {
-    return (
-                  <div>
-                      {this.state.data}
-                  </div>
-    );
+    const { data } = this.state;
+    return <div>{data}</div>;
   }
 }
 
 Currency.propTypes = {
   arrives: PropTypes.string.isRequired,
   out: PropTypes.string.isRequired,
-  lang: PropTypes.number.isRequired,
+  lang: PropTypes.number.isRequired
 };

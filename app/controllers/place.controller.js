@@ -2,7 +2,7 @@ const db = require('../models');
 
 const Place = db.places;
 
-// Create and Save a new Country
+// Create and Save a new Place
 exports.create = (req, res) => {
   // Validate request
   if (!req.body.title) {
@@ -19,7 +19,7 @@ exports.create = (req, res) => {
     //------------------------------------
   });
 
-  // Save Country in the database
+  // Save Place in the database
   place
     .save(place)
     .then((data) => {
@@ -33,7 +33,7 @@ exports.create = (req, res) => {
     });
 };
 
-// Retrieve all Countries from the database.
+// Retrieve all Places from the database.
 exports.findAll = (req, res) => {
   // const title = req.query.title;
   //------------------------------------
@@ -57,7 +57,7 @@ exports.findAll = (req, res) => {
 
 
 
-// Find a single Country with an id
+// Find a single Place with an id
 exports.findOne = (req, res) => {
   const { id } = req.params;
 
@@ -73,9 +73,7 @@ exports.findOne = (req, res) => {
     });
 };
 
-
-
-// Update a Country by the id in the request
+// Update a Place by the id in the request
 exports.update = (req, res) => {
   if (!req.body) {
     return res.status(400).send({
@@ -101,7 +99,7 @@ exports.update = (req, res) => {
   return null;
 };
 
-// Delete a Country with the specified id in the request
+// Delete a Place with the specified id in the request
 exports.delete = (req, res) => {
   const { id } = req.params;
 
@@ -124,7 +122,7 @@ exports.delete = (req, res) => {
     });
 };
 
-// Delete all Countries from the database.
+// Delete all Places from the database.
 exports.deleteAll = (req, res) => {
   Place.deleteMany({})
     .then((data) => {
@@ -138,18 +136,4 @@ exports.deleteAll = (req, res) => {
           err.message || 'Some error occurred while removing all Places.',
       });
     });
-};
-
-// Find all published Countries
-exports.findAllPublished = (req, res) => {
-// Tutorial.find({ published: true })
-// .then(data => {
-//   res.send(data);
-// })
-// .catch(err => {
-//   res.status(500).send({
-//     message:
-//       err.message || "Some error occurred while retrieving tutorials."
-//   });
-// });
 };

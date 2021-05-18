@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Skeleton from 'react-loading-skeleton';
 import CardCountry from './CardCountry';
 import CountryDataService from '../services/country.service';
 
@@ -13,20 +14,20 @@ class CardsBoard extends Component {
           localizations: [
             {
               name: 'blank',
-              capital: 'blank',
+              capital: 'blank'
             },
             {
               name: 'blank',
-              capital: 'blank',
+              capital: 'blank'
             },
             {
               name: 'blank',
-              capital: 'blank',
-            },
-          ],
-        },
+              capital: 'blank'
+            }
+          ]
+        }
       ],
-      dataLoaded: false,
+      dataLoaded: false
     };
   }
 
@@ -39,7 +40,7 @@ class CardsBoard extends Component {
       .then((response) => {
         this.setState({
           countries: response.data,
-          dataLoaded: true,
+          dataLoaded: true
         });
       })
       .catch((e) => {
@@ -48,24 +49,31 @@ class CardsBoard extends Component {
   }
 
   render() {
+    const { countries, dataLoaded } = this.state;
+    const { filterValue, lang } = this.props;
+
     return (
       <section className="cards-block">
-        {// eslint-disable-next-line max-len
-        this.state.countries.map((el, id) => (el.localizations[this.props.lang].name.toLowerCase().includes(this.props.filterValue.toLowerCase())
-         // eslint-disable-next-line max-len
-         || el.localizations[this.props.lang].capital.toLowerCase().includes(this.props.filterValue.toLowerCase())
-          ? this.state.dataLoaded 
-          ? <CardCountry
+        {countries.map((el, id) =>
+          el.localizations[lang].name.toLowerCase().includes(filterValue.toLowerCase()) ||
+          el.localizations[lang].capital.toLowerCase().includes(filterValue.toLowerCase()) ? (
+            dataLoaded ? (
+              <CardCountry
                 key={id}
-                nameCountry={el.localizations[this.props.lang].name}
-                capitalCountry={el.localizations[this.props.lang].capital}
-                // eslint-disable-next-line no-underscore-dangle
+                nameCountry={el.localizations[lang].name}
+                capitalCountry={el.localizations[lang].capital}
                 id={el._id}
                 imgSrc={el.imageUrl}
               />
-          : 'Loading data...'
-          : null))
-        }
+            ) : (
+              Array.from(Array(9).keys()).map((i) => (
+                <div key={i} className="card-country">
+                  <Skeleton height={200} />
+                </div>
+              ))
+            )
+          ) : null
+        )}
       </section>
     );
   }
@@ -73,7 +81,7 @@ class CardsBoard extends Component {
 
 CardsBoard.propTypes = {
   filterValue: PropTypes.string.isRequired,
-  lang: PropTypes.number.isRequired,
+  lang: PropTypes.number.isRequired
 };
 
 export default CardsBoard;

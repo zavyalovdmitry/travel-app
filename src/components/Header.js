@@ -6,13 +6,13 @@ import LanguageToggle from './LanguageToggle';
 
 class Header extends Component {
   render() {
+    const { logoLink, searchVisible, lang, changeFilter, toggleLang } = this.props;
     return (
-  <header>
-    <Logo logoLink={this.props.logoLink}/>
-    {this.props.searchVisible ? <Search lang={this.props.lang}
-    changeFilter={this.props.changeFilter}/> : null}
-    <LanguageToggle toggleLang={this.props.toggleLang} lang={this.props.lang}/>
-  </header>
+      <header>
+        <Logo logoLink={logoLink} />
+        {searchVisible ? <Search lang={lang} changeFilter={changeFilter} /> : null}
+        <LanguageToggle toggleLang={toggleLang} lang={lang} />
+      </header>
     );
   }
 }
@@ -22,7 +22,7 @@ Header.propTypes = {
   searchVisible: PropTypes.bool.isRequired,
   logoLink: PropTypes.bool.isRequired,
   lang: PropTypes.number.isRequired,
-  toggleLang: PropTypes.func.isRequired,
+  toggleLang: PropTypes.func.isRequired
 };
 
 export default Header;

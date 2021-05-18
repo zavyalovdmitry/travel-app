@@ -1,4 +1,3 @@
-/* eslint-disable global-require */
 module.exports = (app) => {
   const countries = require('../controllers/country.controller.js');
 
@@ -10,9 +9,6 @@ module.exports = (app) => {
   // Retrieve all Countries
   router.get('/', countries.findAll);
 
-  // Retrieve all published Countries
-  router.get('/published', countries.findAllPublished);
-
   // Retrieve a single Country with id
   router.get('/:id', countries.findOne);
 
@@ -22,7 +18,7 @@ module.exports = (app) => {
   // Delete a Country with id
   router.delete('/:id', countries.delete);
 
-  // Create a new Country
+  // Delete all Countries
   router.delete('/', countries.deleteAll);
 
   app.use('/api/countries', router);

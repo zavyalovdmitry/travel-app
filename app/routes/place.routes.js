@@ -1,5 +1,4 @@
-/* eslint-disable global-require */ 
-module.exports = (app) => {
+ module.exports = (app) => {
   const places = require('../controllers/place.controller.js');
 
   const router = require('express').Router();
@@ -10,9 +9,6 @@ module.exports = (app) => {
   // Retrieve all Places
   router.get('/', places.findAll);
 
-  // Retrieve all published Places
-  router.get('/published', places.findAllPublished);
-
   // Retrieve a single Place with id
   router.get('/:id', places.findOne);
 
@@ -22,7 +18,7 @@ module.exports = (app) => {
   // Delete a Place with id
   router.delete('/:id', places.delete);
 
-  // Create a new Place
+  // Delete all Places
   router.delete('/', places.deleteAll);
 
   app.use('/api/places', router);

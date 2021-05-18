@@ -8,11 +8,11 @@ const Footer = () => (
       <span>© 2021</span>
       <a href="https://github.com/antoniosk10">Anton Skorobogaty</a>
       <a href="https://github.com/fpastl">Stas Smoliar</a>
-      <a href="https://github.com/zavyalovdmitry">Dmitry Zavyalov</a>
-      {' '}
-
+      <a href="https://github.com/zavyalovdmitry">Dmitry Zavyalov</a>{' '}
     </p>
-    <a href="https://rs.school/react/" className="logo"><img src={logo} alt="rss" /></a>
+    <a href="https://rs.school/react/" className="logo">
+      <img src={logo} alt="rss" />
+    </a>
   </footer>
 );
 

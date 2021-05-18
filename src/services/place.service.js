@@ -1,17 +1,17 @@
 /* eslint-disable class-methods-use-this */
-import http from 'http-common';
+import http from '../http-common';
 
 class PlaceDataService {
+  create(data) {
+    return http.post('/places', data);
+  }
+
   getAll() {
     return http.get('/places');
   }
 
   get(id) {
     return http.get(`/places/${id}`);
-  }
-
-  create(data) {
-    return http.post('/places', data);
   }
 
   update(id, data) {
@@ -24,10 +24,6 @@ class PlaceDataService {
 
   deleteAll() {
     return http.delete('/places');
-  }
-
-  findByTitle(title) {
-    return http.get(`/places?title=${title}`);
   }
 }
 
